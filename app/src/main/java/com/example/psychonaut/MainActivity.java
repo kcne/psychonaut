@@ -26,32 +26,36 @@ public class MainActivity extends AppCompatActivity {
         iv4.setImageResource(R.drawable.icon4);
         buttonRes=findViewById(R.id.button);
 
-        //onClick listeners:
-        iv1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.activity_main1);
-            }
-        });
-        iv2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.activity_main2);
-            }
-        });
-        iv3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.activity_main3);
-            }
-        });
-        iv4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.activity_main4);
-            }
-        });
+
+
     }
+    public void sendMessage(View view) {
+        //Intent intent = new Intent(this, activitytest.class);
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        //startActivity(intent);
+
+    }
+    public void openGame1(View view){
+        Intent intent = new Intent(this, game1.class);
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+    public void openGame2(View view){
+        Intent intent = new Intent(this, game2.class);
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+    public void openGame3(View view){
+        Intent intent = new Intent(this, game3.class);
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+    public void openGame4(View view){
+        Intent intent = new Intent(this, game4.class);
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
 
 
 }

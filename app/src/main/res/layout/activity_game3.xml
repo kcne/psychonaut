@@ -4,23 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity3">
+    tools:context=".game3">
 
-    <TextView
-        android:id="@+id/textView3"
+    <Button
+        android:id="@+id/homeAct3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game 3"
+        android:onClick="goToMainAct"
+        android:text="Home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="398dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
