@@ -1,2 +1,2 @@
 # psychonaut
-oyun 1,2
+oyun 2,3
