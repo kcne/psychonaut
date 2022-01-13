@@ -24,7 +24,6 @@ public class game3 extends AppCompatActivity {
     TextView questionTV,judgStats,percStats,questionCountTV;
     statsGenerator sg;
     List<jpQuestion> listQ = new ArrayList<jpQuestion>();
-    int questionCounter = 0;
     statsGenerator sq;
     ListView listViewAnswers;
 
@@ -43,7 +42,7 @@ public class game3 extends AppCompatActivity {
         percStats.setText("0%");
         sq = new statsGenerator();
         questionCountTV=findViewById(R.id.textViewKRP);
-        questionCountTV.setText(Integer.toString(sq.numberOfQuestions+1)+"/10");
+        questionCountTV.setText(Integer.toString(sq.numberOfQuestionsJP+1)+"/10");
         listQ=getQuestions();
         ArrayList<String> answerAr=new ArrayList<>();
         String questionS = listQ.get(0).question;
@@ -60,22 +59,22 @@ public class game3 extends AppCompatActivity {
         listViewAnswers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(sq.numberOfQuestions==9){
+                if(sq.numberOfQuestionsJP==9){
                     answerAdapter.clear();
                     questionTV.setText("");
                 }
                 else {
-                    sq.evaluate(listQ.get(sq.numberOfQuestions), position);
+                    sq.evaluateJP(listQ.get(sq.numberOfQuestionsJP), position);
                     judgStats.setText(Double.toString(Math.round(sq.judgingStats * 100)) + "%");
                     percStats.setText(Double.toString(Math.round(sq.perceivingStats * 100)) + "%");
-                    int questionCounter = sq.getNumberOfQuestions();
+                    int questionCounter = sq.getNumberOfQuestionsJP();
                     ArrayList<String> answerList = new ArrayList<String>();
                     answerList = listQ.get(questionCounter).answers;
                     answerAdapter.clear();
                     answerAdapter.addAll(answerList);
                     questionTV.setText(listQ.get(questionCounter).question);
                     listViewAnswers.setAdapter(answerAdapter);
-                    questionCountTV.setText(Integer.toString(sq.numberOfQuestions + 1) + "/10");
+                    questionCountTV.setText(Integer.toString(sq.numberOfQuestionsJP + 1) + "/10");
                 }
             }
         });

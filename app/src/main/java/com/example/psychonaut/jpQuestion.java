@@ -4,9 +4,18 @@ import java.util.ArrayList;
 
 public class jpQuestion {
     String question;
+    int questionType=-1;
+
 
     public jpQuestion(String question, double[] points, ArrayList<String> answers) {
         this.question = question;
+        this.points = points;
+        this.answers = answers;
+    }
+
+    public jpQuestion(String question,double[] points, ArrayList<String> answers,int questionType) {
+        this.question = question;
+        this.questionType = questionType;
         this.points = points;
         this.answers = answers;
     }
@@ -20,8 +29,6 @@ public class jpQuestion {
     }
 
     double points[];
-
-
 
 
     public ArrayList<String> getAnswers() {
