@@ -5,6 +5,78 @@ public class statsGenerator {
         return numberOfQuestionsJP;
     }
 
+    public void setNumberOfQuestionsJP(int numberOfQuestionsJP) {
+        this.numberOfQuestionsJP = numberOfQuestionsJP;
+    }
+
+    public int getNumberOfQuestionsIE() {
+        return numberOfQuestionsIE;
+    }
+
+    public void setNumberOfQuestionsIE(int numberOfQuestionsIE) {
+        this.numberOfQuestionsIE = numberOfQuestionsIE;
+    }
+
+    public int getNumberOfQuestionsIS() {
+        return numberOfQuestionsIS;
+    }
+
+    public void setNumberOfQuestionsIS(int numberOfQuestionsIS) {
+        this.numberOfQuestionsIS = numberOfQuestionsIS;
+    }
+
+    public int getNumberOfQuestionsTF() {
+        return numberOfQuestionsTF;
+    }
+
+    public void setNumberOfQuestionsTF(int numberOfQuestionsTF) {
+        this.numberOfQuestionsTF = numberOfQuestionsTF;
+    }
+
+    public void setNumberOfQuestionsGlobal(int numberOfQuestionsGlobal) {
+        this.numberOfQuestionsGlobal = numberOfQuestionsGlobal;
+    }
+
+    public void setJudgingC(double judgingC) {
+        this.judgingC = judgingC;
+    }
+
+    public void setPerceivingC(double perceivingC) {
+        this.perceivingC = perceivingC;
+    }
+
+    public void setJudgingStats(double judgingStats) {
+        this.judgingStats = judgingStats;
+    }
+
+    public void setPerceivingStats(double perceivingStats) {
+        this.perceivingStats = perceivingStats;
+    }
+
+    public double getIntrovertStats() {
+        return introvertStats;
+    }
+
+    public void setIntrovertStats(double introvertStats) {
+        this.introvertStats = introvertStats;
+    }
+
+    public double getIntuitiveStats() {
+        return intuitiveStats;
+    }
+
+    public void setIntuitiveStats(double intuitiveStats) {
+        this.intuitiveStats = intuitiveStats;
+    }
+
+    public double getThinkerStats() {
+        return thinkerStats;
+    }
+
+    public void setThinkerStats(double thinkerStats) {
+        this.thinkerStats = thinkerStats;
+    }
+
     int numberOfQuestionsJP=0;
     int numberOfQuestionsIE=0;
     int numberOfQuestionsIS=0;
@@ -17,6 +89,7 @@ public class statsGenerator {
     double introvertStats=0;
     double intuitiveStats=0;
     double thinkerStats=0;
+
 
     public statsGenerator() {
     }

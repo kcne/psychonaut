@@ -3,6 +3,7 @@ package com.example.psychonaut;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,46 +23,89 @@ public class game4 extends AppCompatActivity {
     statsGenerator sg;
     TextView questionC;
     TextView questionText;
-    TextView introvertStats,extrovertStats,intuitiveStats,sensorStats,thinkerStats,feelerStats,judgingStats,perceiveingStats;
+    TextView introvertStats, extrovertStats, intuitiveStats, sensorStats, thinkerStats, feelerStats, judgingStats, perceiveingStats;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game4);
+        SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
         image = findViewById(R.id.imageViewR);
         listView = findViewById(R.id.listViewR);
         sg = new statsGenerator();
         listQ = loadImageQA();
         questionC = findViewById(R.id.textBoxQCR);
-        questionText=findViewById(R.id.textViewQR);
-        introvertStats=findViewById(R.id.textViewIntrovert);
-        extrovertStats=findViewById(R.id.textViewExtrovert);
-        intuitiveStats=findViewById(R.id.textViewIntuitive);
-        sensorStats=findViewById(R.id.textViewSensor);
-        thinkerStats=findViewById(R.id.textViewThinker);
-        feelerStats=findViewById(R.id.textViewFeeler);
-        judgingStats=findViewById(R.id.textViewJudging);
-        perceiveingStats=findViewById(R.id.textViewPerceiving);
+        questionText = findViewById(R.id.textViewQR);
+        introvertStats = findViewById(R.id.textViewIntrovert);
+        extrovertStats = findViewById(R.id.textViewExtrovert);
+        intuitiveStats = findViewById(R.id.textViewIntuitive);
+        sensorStats = findViewById(R.id.textViewSensor);
+        thinkerStats = findViewById(R.id.textViewThinker);
+        feelerStats = findViewById(R.id.textViewFeeler);
+        judgingStats = findViewById(R.id.textViewJudging);
+        perceiveingStats = findViewById(R.id.textViewPerceiving);
 
 
-
+        int qc = preferences.getInt("Game4C", 0);
+        editor.apply();
+        sg.setNumberOfQuestionsGlobal(qc);
         ArrayList<String> answerAr = new ArrayList<>();
-        String questionS = listQ.get(0).question;
-        answerAr = listQ.get(0).answers;
-        double answerPoints[] = listQ.get(0).points;
+        String questionS = listQ.get(qc).question;
+        answerAr = listQ.get(qc).answers;
+        double answerPoints[] = listQ.get(qc).points;
         ArrayAdapter<String> answerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, answerAr);
         listView.setAdapter(answerAdapter);
 
+
+        questionC.setText(Integer.toString(preferences.getInt("Game4C", 0) + 1));
+
+        editor.apply();
+        getStats();
+        //editor.apply();
         //set starting stats
 
-        introvertStats.setText("Introverted: "+Double.toString(Math.round(sg.introvertStats * 100)) + "%");
-        extrovertStats.setText("Extroverted: "+Double.toString(0) + "%");
-        intuitiveStats.setText("Intuitive: "+Double.toString(Math.round(sg.intuitiveStats * 100)) + "%");
-        sensorStats.setText("Sensor: "+Double.toString(0) + "%");
-        thinkerStats.setText("Thinker: "+Double.toString(Math.round(sg.thinkerStats * 100)) + "%");
-        feelerStats.setText("Feeler: "+Double.toString(0) + "%");
-        judgingStats.setText("Judging: "+Double.toString(Math.round(sg.judgingStats * 100)) + "%");
-        perceiveingStats.setText("Perceiving: "+Double.toString(0) + "%");
+        //set picture
+
+
+        switch (qc) {
+            case 1:
+                image.setImageResource(R.drawable.rorschach2);
+                break;  //optional
+            case 2:
+                image.setImageResource(R.drawable.rorschach3);
+                break;  //optional
+            case 3:
+                image.setImageResource(R.drawable.rorschach4);
+                break;  //optional
+            case 4:
+                image.setImageResource(R.drawable.rorschach5);
+                break;  //optional
+            case 5:
+                image.setImageResource(R.drawable.rorschach6);
+                break;  //optional
+            case 6:
+                image.setImageResource(R.drawable.rorschach7);
+                break;  //optional
+            case 7:
+                image.setImageResource(R.drawable.rorschach8);
+                break;  //optional
+            case 8:
+                image.setImageResource(R.drawable.rorschach9);
+                break;  //optional
+            case 9:
+                image.setImageResource(R.drawable.rorschach10);
+                answerAdapter.clear();
+                questionText.setText("You successfully completed the Rorchach Blot test!");
+                image.setImageResource(R.drawable.congrats);
+                getStats();
+                break;  //optional
+            default:
+
+        }
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -70,22 +114,22 @@ public class game4 extends AppCompatActivity {
                     answerAdapter.clear();
                     questionText.setText("You successfully completed the Rorchach Blot test!");
                     image.setImageResource(R.drawable.congrats);
-                    introvertStats.setText("");
-                    extrovertStats.setText("");
-                    intuitiveStats.setText("");
-                    sensorStats.setText("");
-                    thinkerStats.setText("");
-                    feelerStats.setText("");
-                    judgingStats.setText("");
-                    perceiveingStats.setText("");
+                    SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
+                    editor.putInt("Game4C", sg.numberOfQuestionsGlobal);
+                    editor.apply();
+                    questionC.setText(Integer.toString(preferences.getInt("Game4C", 0) + 1) + "/10");
                     //
                 } else {
 
                     switch (listQ.get(sg.numberOfQuestionsGlobal).questionType) {
                         case 0:
                             sg.evaluateIE(listQ.get(sg.numberOfQuestionsGlobal), position);
-                            introvertStats.setText("Introverted: "+Double.toString(Math.round(sg.introvertStats * 100)) + "%");
-                            extrovertStats.setText("Extroverted: "+Double.toString(Math.round(100-sg.introvertStats * 100)) + "%");
+                            editor.putInt("numberOfQuestionsIE", sg.numberOfQuestionsIE);
+                            editor.putFloat("Introverted", Math.round(sg.introvertStats * 100));
+                            editor.putFloat("Extroverted", Math.round(100 - sg.introvertStats * 100));
+                            editor.apply();
+                            introvertStats.setText("Introverted: " + Double.toString(Math.round(sg.introvertStats * 100)) + "%");
+                            extrovertStats.setText("Extroverted: " + Double.toString(Math.round(100 - sg.introvertStats * 100)) + "%");
                             int questionCounter = sg.getNumberOfQuestionsGlobal();
                             ArrayList<String> answerList = new ArrayList<String>();
                             answerList = listQ.get(questionCounter).answers;
@@ -96,8 +140,12 @@ public class game4 extends AppCompatActivity {
                             break;  //optional
                         case 1:
                             sg.evaluateIS(listQ.get(sg.numberOfQuestionsGlobal), position);
-                            intuitiveStats.setText("Intuitive: "+Double.toString(Math.round(sg.intuitiveStats * 100)) + "%");
-                            sensorStats.setText("Sensor: "+Double.toString(Math.round(100-sg.intuitiveStats * 100)) + "%");
+                            editor.putInt("numberOfQuestionsIS", sg.numberOfQuestionsIS);
+                            editor.putFloat("Intuitive", Math.round(sg.intuitiveStats * 100));
+                            editor.putFloat("Sensor", Math.round(100 - sg.intuitiveStats * 100));
+                            editor.apply();
+                            intuitiveStats.setText("Intuitive: " + Double.toString(Math.round(sg.intuitiveStats * 100)) + "%");
+                            sensorStats.setText("Sensor: " + Double.toString(Math.round(100 - sg.intuitiveStats * 100)) + "%");
                             questionCounter = sg.getNumberOfQuestionsGlobal();
                             ArrayList<String> answerList1 = new ArrayList<String>();
                             answerList1 = listQ.get(questionCounter).answers;
@@ -108,8 +156,12 @@ public class game4 extends AppCompatActivity {
                             break;  //optional
                         case 2:
                             sg.evaluateTF(listQ.get(sg.numberOfQuestionsGlobal), position);
-                            thinkerStats.setText("Thinker: "+Double.toString(Math.round(sg.thinkerStats * 100)) + "%");
-                            feelerStats.setText("Feeler: "+Double.toString(Math.round(100-sg.thinkerStats * 100)) + "%");
+                            editor.putInt("numberOfQuestionsTF", sg.numberOfQuestionsTF);
+                            editor.putFloat("Thinker", Math.round(sg.thinkerStats * 100));
+                            editor.putFloat("Feeler", Math.round(100 - sg.thinkerStats * 100));
+                            editor.apply();
+                            thinkerStats.setText("Thinker: " + Double.toString(Math.round(sg.thinkerStats * 100)) + "%");
+                            feelerStats.setText("Feeler: " + Double.toString(Math.round(100 - sg.thinkerStats * 100)) + "%");
                             questionCounter = sg.getNumberOfQuestionsGlobal();
                             ArrayList<String> answerList2 = new ArrayList<String>();
                             answerList2 = listQ.get(questionCounter).answers;
@@ -120,15 +172,19 @@ public class game4 extends AppCompatActivity {
                             break;  //optional
                         case 3:
                             sg.evaluateJP(listQ.get(sg.numberOfQuestionsGlobal), position);
-                            judgingStats.setText("Judging: "+Double.toString(Math.round(sg.judgingStats * 100)) + "%");
-                            perceiveingStats.setText("Perceiving: "+Double.toString(Math.round(100-sg.judgingStats * 100)) + "%");
+                            editor.putInt("numberOfQuestionsJP", sg.numberOfQuestionsJP);
+                            editor.putFloat("Judging", Math.round(sg.thinkerStats * 100));
+                            editor.putFloat("Perceiving", Math.round(100 - sg.thinkerStats * 100));
+                            editor.apply();
+                            judgingStats.setText("Judging: " + Double.toString(Math.round(sg.judgingStats * 100)) + "%");
+                            perceiveingStats.setText("Perceiving: " + Double.toString(Math.round(100 - sg.judgingStats * 100)) + "%");
                             questionCounter = sg.getNumberOfQuestionsGlobal();
                             ArrayList<String> answerList3 = new ArrayList<String>();
                             answerList3 = listQ.get(questionCounter).answers;
                             answerAdapter.clear();
                             answerAdapter.addAll(answerList3);
                             listView.setAdapter(answerAdapter);
-                            questionC.setText(Integer.toString(sg.numberOfQuestionsGlobal + 1) + "/10");
+
                             break;  //optional
                         default:
                             //code to be executed if all cases are not matched;
@@ -163,6 +219,10 @@ public class game4 extends AppCompatActivity {
                             break;  //optional
                     }
                 }
+                SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
+                editor.putInt("Game4C", sg.numberOfQuestionsGlobal);
+                editor.apply();
+                questionC.setText(Integer.toString(preferences.getInt("Game4C", 0) + 1) + "/10");
             }
         });
 
@@ -286,4 +346,48 @@ public class game4 extends AppCompatActivity {
 
         return ql;
     }
+
+    public void resetAll() {
+        SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("Game4C", 0);
+        editor.apply();
+        editor.putInt("numberOfQuestionsIE", 0);
+        editor.putFloat("Introverted", 0);
+        editor.putFloat("Extroverted", 0);
+        editor.putInt("numberOfQuestionsIS", 0);
+        editor.putFloat("Intuitive", 0);
+        editor.putFloat("Sensor", 0);
+        editor.putInt("numberOfQuestionsTF", 0);
+        editor.putFloat("Thinker", 0);
+        editor.putFloat("Feeler", 0);
+        editor.putInt("numberOfQuestionsJP", 0);
+        editor.putFloat("Judging", 0);
+        editor.putFloat("Perceiving", 0);
+        editor.apply();
+    }
+
+    public void getStats() {
+        SharedPreferences preferences = getSharedPreferences("settings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        introvertStats.setText("Introverted: " + Double.toString(Math.round(preferences.getFloat("Introverted", 0))) + "%");
+        extrovertStats.setText("Extroverted: " + Double.toString(Math.round(preferences.getFloat("Extroverted", 0))) + "%");
+        sg.numberOfQuestionsIE = preferences.getInt("numberOfQuestionsIE", 0);
+        intuitiveStats.setText("Intuitive: " + Double.toString(Math.round(preferences.getFloat("Intuitive", 0))) + "%");
+        sensorStats.setText("Sensor: " + Double.toString(Math.round(preferences.getFloat("Sensor", 0))) + "%");
+        sg.numberOfQuestionsIS = preferences.getInt("numberOfQuestionsIS", 0);
+        thinkerStats.setText("Thinker: " + Double.toString(Math.round(preferences.getFloat("Thinker", 0))) + "%");
+        feelerStats.setText("Feeler: " + Double.toString(Math.round(preferences.getFloat("Feeler", 0))) + "%");
+        sg.numberOfQuestionsTF = preferences.getInt("numberOfQuestionsTF", 0);
+        judgingStats.setText("Judging: " + Double.toString(Math.round(preferences.getFloat("Judging", 0))) + "%");
+        perceiveingStats.setText("Perceiving: " + Double.toString(Math.round(preferences.getFloat("Perceiving", 0))) + "%");
+        sg.numberOfQuestionsJP = preferences.getInt("numberOfQuestionsJP", 0);
+        editor.apply();
+
+        //set picture
+
+    }
+
 }
+

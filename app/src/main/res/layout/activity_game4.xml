@@ -59,7 +59,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="37dp"
         android:layout_marginBottom="27dp"
-        android:text="1/10"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

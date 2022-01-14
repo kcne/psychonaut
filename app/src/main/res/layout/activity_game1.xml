@@ -10,11 +10,241 @@
         android:id="@+id/homeAct1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginBottom="340dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="4dp"
         android:onClick="goToMainAct"
         android:text="Home"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/textViewJgPc"
+        app:layout_constraintTop_toBottomOf="@+id/textViewJgPc" />
+
+    <TextView
+        android:id="@+id/textViewInEx"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="10dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula, nunc vel consectetur dapibus, erat sapien dictum quam, et accumsan ligula enim et tellus. "
+        android:textColor="#EA6363"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewIntuit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIntro" />
+
+    <TextView
+        android:id="@+id/textViewExt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="10dp"
+        android:text="Extroverted"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewInEx"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBar1" />
+
+    <TextView
+        android:id="@+id/textViewIntro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="10dp"
+        android:text="Introverted"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewInEx"
+        app:layout_constraintEnd_toStartOf="@+id/seekBar1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:max="100"
+        android:progress="70"
+        android:progressTint="#E67575"
+        android:saveEnabled="false"
+        android:thumbTint="#EA6363"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewExt"
+        app:layout_constraintEnd_toStartOf="@+id/textViewExt"
+        app:layout_constraintStart_toEndOf="@+id/textViewIntro"
+        app:layout_constraintTop_toTopOf="@+id/textViewExt" />
+
+    <TextView
+        android:id="@+id/textViewJgPc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="6dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula, nunc vel consectetur dapibus, erat sapien dictum quam, et accumsan ligula enim et tellus. "
+        android:textColor="#6E4385"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/homeAct1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="Percieving"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBar4"
+        app:layout_constraintTop_toTopOf="@+id/seekBar4" />
+
+    <SeekBar
+        android:id="@+id/seekBar4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
+        android:max="100"
+        android:progress="70"
+        android:progressTint="#A375BC"
+        android:thumbTint="#6E4385"
+        app:layout_constraintBottom_toBottomOf="@+id/textView17"
+        app:layout_constraintEnd_toStartOf="@+id/textView15"
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="13dp"
+        android:text="Judging"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewJgPc"
+        app:layout_constraintEnd_toStartOf="@+id/seekBar4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTnFe" />
+
+    <TextView
+        android:id="@+id/textViewTnFe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="11dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula, nunc vel consectetur dapibus, erat sapien dictum quam, et accumsan ligula enim et tellus. "
+        android:textColor="#4D706E"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView17"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="Thinker"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTnFe"
+        app:layout_constraintEnd_toStartOf="@+id/seekBar3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInSn" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Feeler"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBar3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInSn" />
+
+    <SeekBar
+        android:id="@+id/seekBar3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="9dp"
+        android:max="100"
+        android:progress="70"
+        android:progressTint="#78BDB5"
+        android:thumbTint="#4D706E"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/textViewInSn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="10dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula, nunc vel consectetur dapibus, erat sapien dictum quam, et accumsan ligula enim et tellus. "
+        android:textColor="#679852"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIntuit" />
+
+    <TextView
+        android:id="@+id/textViewSens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="45dp"
+        android:text="Sensor"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBar2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInEx" />
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="12dp"
+        android:max="100"
+        android:progress="70"
+        android:progressTint="#9ABD8D"
+        android:thumbTint="#679852"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewIntuit"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSens"
+        app:layout_constraintStart_toEndOf="@+id/textViewIntuit"
+        app:layout_constraintTop_toTopOf="@+id/textViewIntuit" />
+
+    <TextView
+        android:id="@+id/textViewIntuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="22dp"
+        android:text="Intuitive"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewInSn"
+        app:layout_constraintEnd_toStartOf="@+id/seekBar2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInEx" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
